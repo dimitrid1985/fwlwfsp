@@ -1,0 +1,70 @@
+:root {
+    --width-max: 1200px;
+    --separador: 20px;
+}
+
+html * {
+    box-sizing: border-box;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+p {
+    margin-top: 1rem;
+}
+
+section {
+    min-height: 100vh;
+}
+
+.photo_on_the_left,
+.photo_on_the_right {
+    background-color: beige;
+    display: flex;
+    flex-direction: column;
+}
+
+.photo_on_the_left::before,
+.photo_on_the_right::before {
+    content: '';
+    display: inline-block;
+    height: 50vh;
+    width: 100%;
+    background-image: url('background.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.photo_on_the_left .wrapper,
+.photo_on_the_right .wrapper {
+    padding: var(--separador);
+    display: flex;
+    align-items: center;
+    min-height: 50vh;
+}
+
+@media screen and (min-width:768px) {
+    .photo_on_the_left {
+        flex-direction: row;
+    }
+
+    .photo_on_the_right {
+        flex-direction: row-reverse;
+    }
+
+    .photo_on_the_left::before,
+    .photo_on_the_right::before {
+        height: 100vh;
+        width: 50%;
+    }
+
+    .photo_on_the_left .wrapper,
+    .photo_on_the_right .wrapper {
+        width: 50%;
+        max-width: calc(var(--width-max)/2);
+        height: 100vh;
+    }
+}
